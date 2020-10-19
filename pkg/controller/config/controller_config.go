@@ -57,6 +57,14 @@ func GetControllerConfig() *ControllerConfig {
 	return instance
 }
 
+func (c *ControllerConfig) DashboardRefList() []*v1alpha1.GrafanaDashboardRef {
+	var l []*v1alpha1.GrafanaDashboardRef
+	for k, _ := range c.Dashboards {
+		l = append(l, c.Dashboards[k]...)
+	}
+	return l
+}
+
 func (c *ControllerConfig) GetDashboardId(namespace, name string) string {
 	return fmt.Sprintf("%v/%v", namespace, name)
 }
@@ -117,10 +125,17 @@ func (c *ControllerConfig) InvalidateDashboards() {
 	}
 }
 
-func (c *ControllerConfig) SetDashboards(dashboards map[string][]*v1alpha1.GrafanaDashboardRef) {
+func (c *ControllerConfig) ResetDashboards() {
+	c.Dashboards = make(map[string][]*v1alpha1.GrafanaDashboardRef)
+}
+
+func (c *ControllerConfig) SetDashboards(dashboards []*v1alpha1.GrafanaDashboardRef) {
 	c.Lock()
 	defer c.Unlock()
-	c.Dashboards = dashboards
+
+	for _, d := range dashboards {
+		c.Dashboards[d.Namespace] = append(c.Dashboards[d.Namespace], d)
+	}
 }
 
 func (c *ControllerConfig) RemoveDashboard(namespace, name string) {

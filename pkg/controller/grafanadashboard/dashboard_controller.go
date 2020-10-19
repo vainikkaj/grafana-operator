@@ -319,10 +319,6 @@ func (r *ReconcileGrafanaDashboard) reconcileDashboards(request reconcile.Reques
 			r.config.RemovePluginsFor(dashboard.Namespace, dashboard.Name)
 			r.config.RemoveDashboard(dashboard.Namespace, dashboard.Name)
 
-			// Mark the dashboards as synced so that the current state can be written
-			// to the Grafana CR by the grafana controller
-			r.config.AddConfigItem(config.ConfigGrafanaDashboardsSynced, true)
-
 			// Refresh the list of known dashboards after the dashboard has been removed
 			knownDashboards = r.config.GetDashboards(request.Namespace)
 
@@ -338,6 +334,10 @@ func (r *ReconcileGrafanaDashboard) reconcileDashboards(request reconcile.Reques
 			}
 		}
 	}
+
+	// Mark the dashboards as synced so that the current state can be written
+	// to the Grafana CR by the grafana controller
+	r.config.AddConfigItem(config.ConfigGrafanaDashboardsSynced, true)
 
 	return reconcile.Result{Requeue: false}, nil
 }
