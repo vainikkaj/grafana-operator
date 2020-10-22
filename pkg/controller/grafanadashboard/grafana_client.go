@@ -18,8 +18,7 @@ const (
 	CreateOrUpdateFolderUrl    = "%v/api/folders"
 	DeleteFolderByUIDUrl       = "%v/api/folders/%v"
 	GetFolderByIDUrl           = "%v/api/folders/id/%v"
-	//TODO is this right? VV
-	SearchURL = "%v/api/search?type=dash-db"
+
 )
 
 const (
