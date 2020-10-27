@@ -92,6 +92,9 @@ func startDashboardController(ns string, cfg *rest.Config, signalHandler <-chan 
 			os.Exit(1)
 		}
 	}()
+
+	// Use a separate manager for the Loki controller
+
 }
 
 // Get the trimmed and sanitized list of namespaces (if --namespaces was provided)

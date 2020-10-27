@@ -64,6 +64,9 @@ cluster/prepare/local: cluster/prepare/local/file
 	kubectl apply -f deploy/cluster_roles
 	kubectl apply -f deploy/examples/Grafana.yaml -n ${NAMESPACE}
 
+.PHONY: cluster/prepare/local/loki
+cluster/prepare/local/loki:
+
 .PHONY: cluster/cleanup
 cluster/cleanup: operator/stop
 	-kubectl delete deployment grafana-deployment -n ${NAMESPACE}

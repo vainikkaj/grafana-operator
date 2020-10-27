@@ -1,6 +1,7 @@
 package model
 
 const (
+	//Grafana
 	GrafanaImage                        = "grafana/grafana"
 	GrafanaVersion                      = "7.1.1"
 	GrafanaServiceAccountName           = "grafana-serviceaccount"
@@ -27,4 +28,9 @@ const (
 	GrafanaAdminPasswordEnvVar          = "GF_SECURITY_ADMIN_PASSWORD"
 	GrafanaHttpPort                 int = 3000
 	GrafanaHttpPortName                 = "grafana"
+	//Loki
+	LokiImage            = "grafana/loki"
+	LokiVersion          = "2.0.0"
+	LokiHttpPort     int = 3100
+	LokiHttpPortName     = "loki"
 )
