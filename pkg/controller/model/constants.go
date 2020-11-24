@@ -28,10 +28,13 @@ const (
 	GrafanaAdminPasswordEnvVar          = "GF_SECURITY_ADMIN_PASSWORD"
 	GrafanaHttpPort                 int = 3000
 	GrafanaHttpPortName                 = "grafana"
+
 	//Loki
+	LokiServiceName        = "loki-service"
 	LokiImage              = "grafana/loki"
 	LokiVersion            = "2.0.0"
 	LokiHttpPort       int = 3100
+	LokiHttpPrefix         = "/api/prom"
 	LokiHttpPortName       = "loki"
 	LokiPodLabel           = "loki"
 	LokiDeploymentName     = "loki-deployment"
