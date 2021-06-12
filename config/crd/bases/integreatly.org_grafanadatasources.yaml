@@ -110,6 +110,17 @@ spec:
                           type: string
                         esVersion:
                           type: integer
+                        exemplarTraceIdDestinations:
+                          items:
+                            properties:
+                              datasourceUid:
+                                type: string
+                              name:
+                                type: string
+                              url:
+                                type: string
+                            type: object
+                          type: array
                         graphiteVersion:
                           type: string
                         httpHeaderName1:
@@ -184,6 +195,15 @@ spec:
                         tokenUri:
                           description: Fields for Stackdriver data sources
                           type: string
+                        tracesToLogs:
+                          items:
+                            properties:
+                              datasourceUid:
+                                type: string
+                              tags:
+                                type: string
+                            type: object
+                          type: array
                         tsdbResolution:
                           type: string
                         tsdbVersion:

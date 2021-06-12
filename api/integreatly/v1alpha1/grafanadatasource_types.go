@@ -156,8 +156,11 @@ type GrafanaDataSourceJsonData struct {
 	Organization  string `json:"organization,omitempty"`
 	DefaultBucket string `json:"defaultBucket,omitempty"`
 	// Fields for Loki data sources
-	MaxLines      int                                  `json:"maxLines,omitempty"`
-	DerivedFields []GrafanaDataSourceJsonDerivedFields `json:"derivedFields,omitempty"`
+	MaxLines                    int                                                `json:"maxLines,omitempty"`
+	DerivedFields               []GrafanaDataSourceJsonDerivedFields               `json:"derivedFields,omitempty"`
+	ExemplarTraceIdDestinations []GrafanaDataSourceJsonExemplarTraceIdDestinations `json:"exemplarTraceIdDestinations,omitempty"`
+	TracesToLogs                []GrafanaDataSourceJsonTracesToLogs                `json:"tracesToLogs,omitempty"`
+
 	// Fields for Prometheus data sources
 	CustomQueryParameters string `json:"customQueryParameters,omitempty"`
 	HTTPMethod            string `json:"httpMethod,omitempty"`
@@ -168,6 +171,17 @@ type GrafanaDataSourceJsonDerivedFields struct {
 	MatcherRegex  string `json:"matcherRegex,omitempty"`
 	Name          string `json:"name,omitempty"`
 	Url           string `json:"url,omitempty"`
+}
+
+type GrafanaDataSourceJsonExemplarTraceIdDestinations struct {
+	DatasourceUid string `json:"datasourceUid,omitempty"`
+	Name          string `json:"name,omitempty"`
+	Url           string `json:"url,omitempty"`
+}
+
+type GrafanaDataSourceJsonTracesToLogs struct {
+	DatasourceUid string `json:"datasourceUid,omitempty"`
+	Tags          string `json:"tags,omitempty"`
 }
 
 // The most common secure json options
