@@ -196,14 +196,14 @@ spec:
                           description: Fields for Stackdriver data sources
                           type: string
                         tracesToLogs:
-                          items:
-                            properties:
-                              datasourceUid:
+                          properties:
+                            datasourceUid:
+                              type: string
+                            tags:
+                              items:
                                 type: string
-                              tags:
-                                type: string
-                            type: object
-                          type: array
+                              type: array
+                          type: object
                         tsdbResolution:
                           type: string
                         tsdbVersion:

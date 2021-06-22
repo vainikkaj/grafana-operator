@@ -159,7 +159,7 @@ type GrafanaDataSourceJsonData struct {
 	MaxLines                    int                                                `json:"maxLines,omitempty"`
 	DerivedFields               []GrafanaDataSourceJsonDerivedFields               `json:"derivedFields,omitempty"`
 	ExemplarTraceIdDestinations []GrafanaDataSourceJsonExemplarTraceIdDestinations `json:"exemplarTraceIdDestinations,omitempty"`
-	TracesToLogs                []GrafanaDataSourceJsonTracesToLogs                `json:"tracesToLogs,omitempty"`
+	TracesToLogs                GrafanaDataSourceJsonTracesToLogs                  `json:"tracesToLogs,omitempty"`
 
 	// Fields for Prometheus data sources
 	CustomQueryParameters string `json:"customQueryParameters,omitempty"`
@@ -180,8 +180,8 @@ type GrafanaDataSourceJsonExemplarTraceIdDestinations struct {
 }
 
 type GrafanaDataSourceJsonTracesToLogs struct {
-	DatasourceUid string `json:"datasourceUid,omitempty"`
-	Tags          string `json:"tags,omitempty"`
+	DatasourceUid string   `json:"datasourceUid,omitempty"`
+	Tags          []string `json:"tags,omitempty"`
 }
 
 // The most common secure json options
